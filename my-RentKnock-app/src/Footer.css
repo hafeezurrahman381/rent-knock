@@ -1,0 +1,328 @@
+@import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@300;400;500;700&display=swap');
+
+
+.footer {
+  background: orange;
+  color: #fff;
+  padding: 40px 60px 20px;
+  font-family: 'Alegreya Sans', sans-serif;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 50px;
+}
+
+.footer-left {
+  width: 40%;
+
+}
+
+.app-logo {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.contact p {
+  margin: 4px 0;
+}
+
+.phone {
+  font-weight: bold;
+}
+.cont{
+    font-weight: 700;
+    font-size: 20px;
+}
+.title {
+  margin-top: 15px;
+  font-weight: bold;
+  margin-left: -62px;
+}
+
+/* ICONS */
+.wats-logo,
+.call-logo {
+  color: white;
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+
+.app-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.app-buttons img {
+  height: 40px;
+  cursor: pointer;
+}
+
+.footer-middle,
+.footer-right {
+  width: 25%;
+}
+
+.footer-middle h4,
+.footer-right h4 {
+  margin-bottom: 15px;
+  border-bottom: 2px solid #fff;
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+.footer-middle ul,
+.footer-right ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-middle li,
+.footer-right li {
+  margin-bottom: 8px;
+  cursor: pointer;
+}
+
+.footer-middle li:hover,
+.footer-right li:hover {
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 30px;
+  border-top: 1px solid rgba(255,255,255,0.3);
+  padding-top: 15px;
+  font-size: 14px;
+}
+/* ================= MOBILE ================= */
+@media (max-width: 480px) {
+  .footer {
+    padding: 20px 15px 10px;
+  }
+
+  .footer-container {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .footer-left,
+  .footer-middle,
+  .footer-right {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .app-logo {
+    font-size: 22px;
+    margin-bottom: 15px;
+  }
+
+  .cont {
+    font-size: 18px;
+  }
+
+  .title {
+    margin-left: 0;
+    font-size: 16px;
+  }
+
+  .wats-logo,
+  .call-logo {
+    font-size: 16px;
+    margin-right: 6px;
+  }
+
+  .app-buttons img {
+    height: 30px;
+  }
+
+  .footer-middle h4,
+  .footer-right h4 {
+    font-size: 16px;
+  }
+
+  .footer-middle li,
+  .footer-right li {
+    font-size: 12px;
+  }
+
+  .footer-bottom {
+    font-size: 12px;
+    padding-top: 10px;
+  }
+}
+
+/* ================= TABLET ================= */
+@media (max-width: 768px) {
+  .footer {
+    padding: 30px 25px 15px;
+  }
+
+  .footer-container {
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  .footer-left,
+  .footer-middle,
+  .footer-right {
+    width: 100%;
+  }
+
+  .app-logo {
+    font-size: 24px;
+    margin-bottom: 18px;
+  }
+
+  .cont {
+    font-size: 19px;
+  }
+
+  .title {
+    font-size: 18px;
+  }
+
+  .wats-logo,
+  .call-logo {
+    font-size: 18px;
+  }
+
+  .app-buttons img {
+    height: 35px;
+  }
+
+  .footer-middle h4,
+  .footer-right h4 {
+    font-size: 17px;
+  }
+
+  .footer-middle li,
+  .footer-right li {
+    font-size: 13px;
+  }
+
+  .footer-bottom {
+    font-size: 13px;
+    padding-top: 12px;
+  }
+}
+
+/* ================= LAPTOP ================= */
+@media (max-width: 1024px) {
+  .footer {
+    padding: 35px 40px 18px;
+  }
+
+  .footer-container {
+    flex-direction: row;
+    gap: 30px;
+  }
+
+  .footer-left {
+    width: 45%;
+  }
+
+  .footer-middle,
+  .footer-right {
+    width: 27%;
+  }
+
+  .app-logo {
+    font-size: 26px;
+    margin-bottom: 20px;
+  }
+
+  .cont {
+    font-size: 20px;
+  }
+
+  .title {
+    font-size: 19px;
+  }
+
+  .wats-logo,
+  .call-logo {
+    font-size: 19px;
+  }
+
+  .app-buttons img {
+    height: 38px;
+  }
+
+  .footer-middle h4,
+  .footer-right h4 {
+    font-size: 18px;
+  }
+
+  .footer-middle li,
+  .footer-right li {
+    font-size: 14px;
+  }
+
+  .footer-bottom {
+    font-size: 14px;
+    padding-top: 14px;
+  }
+}
+
+/* ================= DESKTOP ================= */
+@media (max-width: 1200px) {
+  .footer {
+    padding: 40px 60px 20px;
+  }
+
+  .footer-container {
+    flex-direction: row;
+    gap: 50px;
+  }
+
+  .footer-left {
+    width: 40%;
+  }
+
+  .footer-middle,
+  .footer-right {
+    width: 25%;
+  }
+
+  .app-logo {
+    font-size: 28px;
+  }
+
+  .cont {
+    font-size: 20px;
+  }
+
+  .title {
+    font-size: 20px;
+  }
+
+  .wats-logo,
+  .call-logo {
+    font-size: 20px;
+  }
+
+  .app-buttons img {
+    height: 40px;
+  }
+
+  .footer-middle h4,
+  .footer-right h4 {
+    font-size: 18px;
+  }
+
+  .footer-middle li,
+  .footer-right li {
+    font-size: 14px;
+  }
+
+  .footer-bottom {
+    font-size: 14px;
+    padding-top: 15px;
+  }
+}

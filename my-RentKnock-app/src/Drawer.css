@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@300;400;500;700&display=swap');
+/* WRAPPER */
+.drawer-wrapper {
+  position: relative;
+}
+
+/* SIDEBAR */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -260px;                 /* hidden */
+  width: 260px;
+  height: 100vh;
+  background: #ffffff;
+  box-shadow: 2px 0 12px rgba(0,0,0,0.15);
+  padding: 20px;
+  z-index: 1000;
+  font-family: 'Alegreya Sans', sans-serif;
+
+  /* 🎯 ANIMATION */
+  transition: left 0.35s ease-in-out;
+}
+
+/* OPEN STATE */
+.drawer-wrapper.open .sidebar {
+  left: 0;
+}
+
+/* PROFILE */
+.profile-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 25px;
+
+  /* small fade */
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: all 0.4s ease;
+}
+
+.drawer-wrapper.open .profile-section {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* MENU */
+.menu {
+  list-style: none;
+  padding: 0;
+}
+
+.menu li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+  cursor: pointer;
+  font-size: 16px;
+
+  /* stagger animation */
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: all 0.35s ease;
+}
+
+/* stagger effect */
+.drawer-wrapper.open .menu li {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.drawer-wrapper.open .menu li:nth-child(1) { transition-delay: 0.1s; }
+.drawer-wrapper.open .menu li:nth-child(2) { transition-delay: 0.15s; }
+.drawer-wrapper.open .menu li:nth-child(3) { transition-delay: 0.2s; }
+.drawer-wrapper.open .menu li:nth-child(4) { transition-delay: 0.25s; }
+.drawer-wrapper.open .menu li:nth-child(5) { transition-delay: 0.3s; }
+.drawer-wrapper.open .menu li:nth-child(6) { transition-delay: 0.35s; }
+
+.menu li:hover,
+.menu li.active {
+  color: orange;
+}
+
+/* CLOSE BUTTON */
+.close-btn {
+  margin-left: auto;
+  cursor: pointer;
+  color: orange;
+  font-size: 18px;
+  transition: transform 0.3s ease;
+}
+
+.close-btn:hover {
+  transform: rotate(90deg);
+}
+
+/* PROFILE ICON */
+.profile-icon {
+  font-size: 40px;
+  color: orange;
+}
+

@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@300;400;500;700&display=swap');
+
+.history-page {
+  padding: 20px;
+  min-height: 100vh;
+  margin: 100px;
+  font-family: 'Alegreya Sans', sans-serif;
+}
+
+.page-title {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.order-card {
+  background: #ffffff;
+  padding: 16px;
+  margin-bottom: 15px;
+  border-radius: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.order-left {
+  display: flex;
+  gap: 15px;
+}
+
+.icon-box {
+  width: 45px;
+  height: 45px;
+  background: #ff6a00;
+  color: #fff;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+
+.order-id {
+  font-size: 13px;
+  color: gray;
+  margin: 0;
+}
+
+.order-title {
+  font-size: 16px;
+  margin: 3px 0;
+}
+
+.order-date {
+  font-size: 13px;
+  color: gray;
+}
+
+.order-right {
+  text-align: right;
+}
+
+.order-price {
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 13px;
+}
+
+.delivered {
+  background: #e6f7ee;
+  color: #1e9e5a;
+}
+
+.pending {
+  background: #fff4e5;
+  color: #ff9800;
+}

@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@400;600;700&display=swap');
+
+.all-categories {
+  padding: 30px 60px;
+  font-family: 'Alegreya Sans', sans-serif;
+  min-height: 100vh;
+}
+
+.all-categories h2 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  color: #333;
+}
+
+/* GRID LIKE DARAZ */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 20px;
+}
+
+/* CARD */
+.category-card {
+  background: white;
+  border-radius: 8px;
+  padding: 18px 10px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid #eee;
+}
+
+.category-card:hover {
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  transform: translateY(-4px);
+}
+
+/* ICON */
+.icon-box {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #fff3ea;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 10px;
+}
+
+.icon-box i {
+  font-size: 26px;
+  color: #F85606; /* Daraz Orange */
+}
+
+/* NAME */
+.category-card p {
+  font-size: 13px;
+  font-weight: 600;
+  color: #333;
+  line-height: 1.3;
+}
