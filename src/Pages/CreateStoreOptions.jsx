@@ -38,7 +38,7 @@ const CreateStoreOptions = () => {
 
               <button
                 className="option-btn"
-                onClick={() => navigate("/create-store")}
+                onClick={() => navigate("/createshop")}
               >
                 Create Shop Listing
               </button>

@@ -1,46 +1,89 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React from "react";
+import "../Pages/Privacy.css";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
-import "./Privacy.css";
 
 const Privacy = () => {
-  const [privacyData, setPrivacyData] = useState("");
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchPrivacy = async () => {
-      try {
-        const response = await axios.get("https://api.example.com/privacy"); // Replace with your API
-        setPrivacyData(response.data.content); // assuming API returns { content: "..." }
-      } catch (error) {
-        console.error("Error fetching privacy data:", error);
-        setPrivacyData("Unable to load privacy policy at the moment.");
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchPrivacy();
-  }, []);
-
   return (
-    <div className="privacy-page">
+    <div>
       <Header />
-      <div className="privacy-container">
+    
+    <div className="privacy-container">
+      <div className="privacy-card">
         <h1>Privacy Policy</h1>
-        {loading ? (
-          <p className="loading">Loading...</p>
-        ) : (
-          <div
-            className="privacy-content"
-            dangerouslySetInnerHTML={{ __html: privacyData }}
-          ></div>
-        )}
+        <p className="updated">Last updated: January 2026</p>
+
+        <section>
+          <h2>1. Introduction</h2>
+          <p>
+            Your privacy is very important to us. This Privacy Policy explains
+            how we collect, use, and protect your personal information.
+          </p>
+        </section>
+
+        <section>
+          <h2>2. Information We Collect</h2>
+          <ul>
+            <li>Personal details such as name, email, and phone number</li>
+            <li>Account and login information</li>
+            <li>Order, store, and transaction details</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>3. How We Use Your Information</h2>
+          <ul>
+            <li>To provide and improve our services</li>
+            <li>To process orders and payments</li>
+            <li>To communicate important updates</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>4. Data Security</h2>
+          <p>
+            We take appropriate security measures to protect your personal data
+            from unauthorized access or misuse.
+          </p>
+        </section>
+
+        <section>
+          <h2>5. Sharing of Information</h2>
+          <p>
+            We do not sell your personal data. Information may be shared only
+            with trusted partners when required by law or service needs.
+          </p>
+        </section>
+
+        <section>
+          <h2>6. Cookies</h2>
+          <p>
+            We use cookies to enhance user experience and analyze platform
+            performance.
+          </p>
+        </section>
+
+        <section>
+          <h2>7. Changes to Privacy Policy</h2>
+          <p>
+            This policy may be updated from time to time. Changes will be posted
+            on this page.
+          </p>
+        </section>
+
+        <section>
+          <h2>8. Contact Us</h2>
+          <p>
+            If you have any questions about this Privacy Policy, please contact
+            our support team.
+          </p>
+        </section>
       </div>
-      <Footer />
+    </div>
+    <Footer />
     </div>
   );
 };
 
 export default Privacy;
+

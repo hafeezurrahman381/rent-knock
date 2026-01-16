@@ -13,6 +13,8 @@ import CreateStoreOptions from "./Pages/CreateStoreOptions";
 import PostIndividual from "./Pages/PostIndividual";
 import TermsAndConditions from "./Pages/TermsAndConditions";
 import Privacy from "./Pages/Privacy";
+import CreateShop from "./Pages/CreateShop";
+import ShopVerification from "./Pages/ShopVerification";
 
 
 
@@ -33,6 +35,8 @@ function App() {
          <Route path="/individual" element={<PostIndividual />} />
           <Route path="/terms" element={<TermsAndConditions />} />
           <Route path="/privacy" element={<Privacy />} />
+          <Route path="/createshop" element={<CreateShop />} />
+          <Route path="/shopverify" element={<ShopVerification />} />
         </Routes>
       </Router>
     </AuthProvider>

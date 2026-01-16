@@ -1,58 +1,88 @@
-// src/TermsAndConditions.jsx
-import React, { useEffect, useState } from "react";
+import React from "react";
+import "../Pages/TermsAndConditions.css";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
-import { fetchTerms } from "../services/termsService";
-import { TermsModel } from "../Models/TermsModel";
-import "../Pages/TermsAndConditions.css";
-
-function TermsAndConditions() {
-  const [terms, setTerms] = useState(new TermsModel());
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
-
-  useEffect(() => {
-    const getTerms = async () => {
-      try {
-        const data = await fetchTerms();
-        const model = new TermsModel(data);
-        setTerms(model);
-      } catch (err) {
-        setError("Failed to load Terms & Conditions.");
-        console.error(err);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    getTerms();
-  }, []);
-
+const TermsAndConditions = () => {
   return (
     <div>
       <Header />
-      <div className="terms-container">
-        {loading ? (
-          <p className="loader">Loading Terms & Conditions...</p>
-        ) : error ? (
-          <p className="error">{error}</p>
-        ) : (
-          <>
-            <h1 className="terms-title">{terms.title}</h1>
-            <div
-              className="terms-content"
-              dangerouslySetInnerHTML={{ __html: terms.content }}
-            ></div>
-            {terms.updatedAt && (
-              <p className="terms-date">Last updated: {terms.updatedAt}</p>
-            )}
-          </>
-        )}
+    
+    <div className="terms-container">
+      <div className="terms-card">
+        <h1>Terms & Conditions</h1>
+        <p className="updated">Last updated: January 2026</p>
+
+        <section>
+          <h2>1. Introduction</h2>
+          <p>
+            Welcome to our platform. By accessing or using our services, you
+            agree to be bound by these Terms and Conditions.
+          </p>
+        </section>
+
+        <section>
+          <h2>2. User Account</h2>
+          <ul>
+            <li>You must provide correct and complete information.</li>
+            <li>You are responsible for maintaining account security.</li>
+            <li>You must not share your login details.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>3. Store & Seller Policy</h2>
+          <ul>
+            <li>Sellers must provide genuine products.</li>
+            <li>Fake or illegal items are strictly prohibited.</li>
+            <li>Violation may result in account suspension.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>4. Orders & Payments</h2>
+          <p>
+            All orders are subject to availability and confirmation. Prices may
+            change without prior notice.
+          </p>
+        </section>
+
+        <section>
+          <h2>5. Returns & Refunds</h2>
+          <p>
+            Return and refund policies depend on seller agreement and product
+            category.
+          </p>
+        </section>
+
+        <section>
+          <h2>6. Privacy Policy</h2>
+          <p>
+            Your personal data is protected and used according to our Privacy
+            Policy.
+          </p>
+        </section>
+
+        <section>
+          <h2>7. Changes to Terms</h2>
+          <p>
+            We reserve the right to update these terms at any time without prior
+            notice.
+          </p>
+        </section>
+
+        <section>
+          <h2>8. Contact Us</h2>
+          <p>
+            If you have any questions about these Terms & Conditions, please
+            contact our support team.
+          </p>
+        </section>
       </div>
-      <Footer />
+    </div>
+    <Footer />
     </div>
   );
-}
+};
 
 export default TermsAndConditions;
 
