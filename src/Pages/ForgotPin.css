@@ -1,77 +1,162 @@
-@import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@300;400;500;700&display=swap');
-
-/* General container styling */
-.forgot-password-container {
-  max-width: 400px;
-  margin: 200px auto;
-  padding: 30px 25px;
-  background-color: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
- font-family: 'Alegreya Sans', sans-serif;
-  text-align: center;
+.main-center-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh;
+  padding: 20px;
+  
 }
 
-/* Heading */
-.forgot-password-container h2 {
-  font-size: 24px;
-  margin-bottom: 20px;
-  color: #333333;
+.auth-split-card {
+  display: flex;
+  width: 900px;
+  height: 500px;
+  background: white;
+  border-radius: 30px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
 }
 
-/* Message text */
-.forgot-password-container p {
-  margin-bottom: 15px;
-  color: #d9534f; /* red for error or info */
+/* Left side stays consistent with your image */
+.left-image-section {
+  flex: 1;
+  position: relative;
+  background: #4a80ff;
+}
+
+.side-bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.overlay-content {
+  position: absolute;
+  bottom: 40px;
+  left: 30px;
+  color: white;
+  z-index: 2;
+}
+
+/* Right side form area */
+.right-form-section {
+  flex: 1.2;
+  padding: 50px 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 30%;
+}
+
+.auth-title {
+  font-size: 28px;
+  color: #333;
+  margin-bottom: 8px;
+}
+.auth-title  {
+  color: #ff7a00;
+  position: relative;
+  display: inline-block;
+  margin-bottom: 30px;
+}
+
+/* ORANGE UNDERLINE */
+.auth-title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  width: 120px;
+  height: 3px;
+  background-color: #ff7a00;
+  border-radius: 5px;
+}
+.auth-subtitle {
+  font-size: 14px;
+  color: #718096;
+  margin-bottom: 30px;
+}
+
+.input-grou label {
+  display: block;
+  margin-bottom: 6px;
   font-weight: 500;
 }
 
-/* Forms */
-.forgot-password-container form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-/* Input fields */
-.forgot-password-container input[type="email"],
-.forgot-password-container input[type="text"],
-.forgot-password-container input[type="password"] {
-  padding: 12px 15px;
-  font-size: 16px;
-  border: 1.5px solid #ccc;
-  border-radius: 8px;
+.input-group input {
+ width: 100%;
+  height: 48px;
+  padding: 0 14px;
+  border-radius: 12px;
+  border: 1.5px solid #dcdcdc;
+  font-size: 14px;
+  color: #333;
   outline: none;
-  transition: border-color 0.3s, box-shadow 0.3s;
+  transition: all 0.3s ease;
+  
+}
+/* INPUT FOCUS ORANGE BORDER */
+.input-group input:focus {
+  outline: none;
+  border: 1.5px solid #ff7a00;
 }
 
-.forgot-password-container input:focus {
-  border-color: orange;
-  box-shadow: 0 0 5px rgba(102, 126, 234, 0.5);
-}
-
-/* Buttons */
-.forgot-password-container button {
-  padding: 12px;
-  font-size: 16px;
-  font-weight: 600;
+.submit-btn-styled {
+  width: 100%;
+   background: linear-gradient(90deg, #ff7a00, #d35400);
   color: #fff;
-  background: orange;
   border: none;
-  border-radius: 8px;
+  padding: 15px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 700;
   cursor: pointer;
-  transition: transform 0.2s, background 0.3s;
+  margin-top: 10px;
 }
 
-.forgot-password-container button:hover {
-  transform: translateY(-2px);
-  background: orange;
+.message-alert {
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  text-align: center;
 }
 
-/* Responsive adjustments */
-@media (max-width: 480px) {
-  .forgot-password-container {
-    margin: 40px 20px;
-    padding: 25px 20px;
-  }
+.message-alert.success { background: #e6fffa; color: #2c7a7b; }
+.message-alert.error { background: #fff5f5; color: #c53030; }
+
+.social-footer {
+  margin-top: 30px;
+  text-align: center;
 }
+
+.back-link-btn {
+  background: none;
+  border: none;
+  color: orange;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+}
+.password-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-wrapper input {
+  width: 100%;
+  padding-right: 40px;
+}
+
+.password-wrapper span {
+  position: absolute;
+  right: 0;
+  cursor: pointer;
+  color: orange;
+  font-size: 18px;
+  margin-right: 10px;
+}
+
+.fade-in { animation: fadeIn 0.5s ease; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }

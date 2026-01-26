@@ -1,20 +1,12 @@
 const BASE_URL = "https://rentapi.msiddiquesteel.com/api/v1/auth";
 
-// COMMON FETCH FUNCTION
 const request = async (url, payload) => {
   try {
     const response = await fetch(url, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
     });
-
-    // Agar server response hi na de
-    if (!response) {
-      throw new Error("Server not responding");
-    }
 
     const data = await response.json();
 
@@ -24,30 +16,23 @@ const request = async (url, payload) => {
 
     return data;
   } catch (error) {
-    console.error("API Error:", error);
+    console.error("API Error:", error.message);
     throw error;
   }
 };
 
-// ================= SIGNUP =================
 export const signupUser = async (payload) => {
+  // Debugging ke liye payload console
+  console.log("Signup Payload:", payload);
+  // Remove avatar if sending JSON
+  delete payload.avatar;
   return await request(`${BASE_URL}/signup`, payload);
 };
 
-// ================= LOGIN =================
-export const loginUser = async (payload) => {
-  return await request(`${BASE_URL}/login`, payload);
-};
+export const loginUser = async (payload) => request(`${BASE_URL}/login`, payload);
+export const forgotPin = async (payload) => request(`${BASE_URL}/forgot-pin`, payload);
+export const resetPin = async (payload) => request(`${BASE_URL}/reset-pin`, payload);
 
-// ================= FORGOT PIN (SEND OTP) =================
-export const forgotPin = async (payload) => {
-  return await request(`${BASE_URL}/forgot-pin`, payload);
-};
-
-// ================= RESET PIN =================
-export const resetPin = async (payload) => {
-  return await request(`${BASE_URL}/reset-pin`, payload);
-};
 
 
 

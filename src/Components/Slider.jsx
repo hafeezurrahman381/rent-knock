@@ -1,88 +1,117 @@
-import React, { useState, useEffect } from "react";
-import "../Components/Slider.css";
+import React, { useState, useEffect } from 'react';
+import './Slider.css';
+
+// 🔹 Local Images Import
+import watch1 from '../assets/watch1.png';
+import watch2 from '../assets/watch2.png';
+import watch3 from '../assets/watch3.png';
+import airpods from '../assets/airpods.png';
+import iphone17 from '../assets/iphone17.png';
+
+const slides = [
+  {
+    id: 1,
+    title: "SMART WEARABLE.",
+    subtitle: "Best Deal Online on smart watches",
+    offer: "UP TO 80% OFF",
+    image: watch1,
+  },
+  {
+    id: 2,
+    title: "NEW ARRIVALS.",
+    subtitle: "Check out the latest tech",
+    offer: "FLAT 50% OFF",
+    image: watch2,
+  },
+   {
+    id: 3,
+    title: "NEW ARRIVALS.",
+    subtitle: "Check out the latest tech",
+    offer: "FLAT 50% OFF",
+    image: watch3,
+  },
+  {
+  id: 4,
+  title: "AIRPODS COLLECTION.",
+  subtitle: "Experience wireless freedom",
+  offer: "FLAT 20% OFF",
+  image: airpods, // Make sure aap ne 'airpods' image import kar li ho
+},
+{
+  id: 5,
+  title: "IPHONE 17",
+  subtitle: "Next-Gen iPhone Experience",
+  offer: "UP TO 15% OFF",
+  image: iphone17,
+}
+];
 
 const Slider = () => {
-  const [slides, setSlides] = useState([]);
-  const [index, setIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-  // 🔹 API se data lana (GET ALL)
+  const nextSlide = () => {
+    setCurrentIndex((prev) =>
+      prev === slides.length - 1 ? 0 : prev + 1
+    );
+  };
+
+  const prevSlide = () => {
+    setCurrentIndex((prev) =>
+      prev === 0 ? slides.length - 1 : prev - 1
+    );
+  };
+
   useEffect(() => {
-    fetch("https://dummyjson.com/products")
-      .then(res => res.json())
-      .then(data => {
-        // sirf kuch products slider ke liye
-        const sliderData = data.products.slice(0, 5).map(item => ({
-          tagline: item.brand,
-          title: item.title,
-          discount: `UP to ${item.discountPercentage}% OFF`,
-          img: item.thumbnail
-        }));
-        setSlides(sliderData);
-      });
-  }, []);
-
-  // 🔹 Auto slide
-  useEffect(() => {
-    if (slides.length === 0) return;
-
-    const interval = setInterval(() => {
-      setIndex(prev => (prev + 1) % slides.length);
-    }, 3000);
-
-    return () => clearInterval(interval);
-  }, [slides]);
-
-  if (slides.length === 0) {
-    return <h2 style={{ textAlign: "center" }}>Loading Slider...</h2>;
-  }
+    const timer = setInterval(nextSlide, 5000);
+    return () => clearInterval(timer);
+  }, [currentIndex]);
 
   return (
-    <div className="banner-wrapper">
-      <button className="nav-btn left-btn"
-        onClick={() =>
-          setIndex(index === 0 ? slides.length - 1 : index - 1)
-        }
-      >
-        &#8249;
-      </button>
+    <div className="main-container">
+      <div className="carousel-wrapper">
 
-      <div className="banner-content">
-        <div className="text-container">
-          <p className="top-tagline">{slides[index].tagline}</p>
-          <h1 className="main-heading">{slides[index].title}</h1>
-          <h3 className="discount-text">{slides[index].discount}</h3>
+        {/* Navigation Buttons */}
+        <button className="nav-btn prev" onClick={prevSlide}>❮</button>
+        <button className="nav-btn next" onClick={nextSlide}>❯</button>
 
-          <div className="pagination-dots">
-            {slides.map((_, i) => (
-              <span
-                key={i}
-                className={`dot ${i === index ? "active" : ""}`}
-                onClick={() => setIndex(i)}
-              ></span>
-            ))}
+        {/* Slide Content */}
+        <div className="slide-content">
+          <div className="text-section">
+            <p className="subtitle">{slides[currentIndex].subtitle}</p>
+            <h1 className="main-title">{slides[currentIndex].title}</h1>
+            <p className="offer-text">{slides[currentIndex].offer}</p>
+
+            {/* Dots Indicator */}
+            <div className="dots-container">
+              {slides.map((_, index) => (
+                <span
+                  key={index}
+                  className={`dot ${index === currentIndex ? 'active' : ''}`}
+                ></span>
+              ))}
+            </div>
+          </div>
+
+          <div className="image-section">
+            
+            <img
+              src={slides[currentIndex].image}
+              alt="Smart Watch"
+              className="watch-img"
+            />
           </div>
         </div>
 
-        <div className="image-container">
-          <div className="circle-bg"></div>
-          <img
-            src={slides[index].img}
-            alt="Product"
-            className="product-img"
-          />
-        </div>
       </div>
-
-      <button className="nav-btn right-btn"
-        onClick={() => setIndex((index + 1) % slides.length)}
-      >
-        &#8250;
-      </button>
     </div>
   );
 };
 
 export default Slider;
+
+
+
+
 
 
 

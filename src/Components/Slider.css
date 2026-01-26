@@ -1,386 +1,126 @@
 @import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@300;400;500;700&display=swap');
-
-/* ===== WRAPPER ===== */
-.banner-wrapper {
-  width: 88%;
-  height: 280px;
-  margin-top: 15px;
-  margin-left: 100px;
-  background: linear-gradient(to right, #1f2a44, #24345c);
-  border-radius: 18px;
-  position: relative;
-  overflow: hidden;
-  font-family: 'Alegreya Sans', sans-serif;
-  display: flex;
-  align-items: center;
-  word-spacing: 2px;
-  padding-left: 40px;
+.main-container {
+  margin: 40px 100px;
+   font-family: 'Alegreya Sans', sans-serif;
+  margin-right: 70px;
 }
 
-/* ===== CONTENT ===== */
-.banner-content {
-  width: 100%;
-  padding: 40px 90px;
+
+/* Carousel Box */
+.carousel-wrapper {
+  background-color: #1a233a; /* Dark blue background */
+  border-radius: 12px;
+  height: 350px;
+  position: relative;
   display: flex;
+  align-items: center;
+  overflow: hidden;
+  color: white;
+}
+
+/* Slide Layout */
+.slide-content {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  padding: 0 80px;
   align-items: center;
   justify-content: space-between;
-  color: #F3F4F6;
 }
 
-/* ===== TEXT ===== */
-.top-tagline {
-  word-spacing: 4px;
-  font-size: 17px;
-  margin-top: -20px;
-  opacity: 0.85;
-}
-
-.main-heading {
-  font-size: 35px;
-  margin: 10px 0;
-  font-weight: 700;
-}
-
-.discount-text {
+/* Text Styling */
+.subtitle {
   font-size: 18px;
-  background: linear-gradient(to right, #F07809, #8A4505);
-  display: inline-block;
-  padding: 4px 12px;
-  border-radius: 6px;
+  font-weight: 300;
+  margin-bottom: 10px;
 }
 
-/* ===== DOTS ===== */
-.pagination-dots {
-  margin-top: 22px;
+.main-title {
+  font-size: 48px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  margin: 0;
 }
 
-.dot {
-  margin-top: 30px;
-  width: 8px;
-  height: 8px;
-  background: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-  margin-right: 7px;
-  cursor: pointer;
-  transition: 0.3s;
+.offer-text {
+  font-size: 22px;
+  margin-top: 10px;
+  font-weight: 500;
+   background: linear-gradient(to right, #F07809, #8A4505);
+  color: #fff;
+  width: 15vw;
+  height: 7vh;
+  text-align: center;
+  padding-top: 10px;
+  border-radius: 5px;
 }
 
-.dot.active {
-  background: linear-gradient(to right, #F07809, #8A4505);
-}
-
-/* ===== IMAGE ===== */
-.image-container {
+/* Image & Background Circle */
+.image-section {
   position: relative;
+  width: 40%;
+  height: 100%;
   display: flex;
-  align-items: center;
   justify-content: center;
-  margin-top: 20px;   /* added top margin */
-  margin-bottom: 20px; /* added bottom margin */
+  align-items: center;
 }
 
-.product-img {
-  height: 220px;
-  z-index: 2;
-  position: relative;
-  filter: drop-shadow(0 15px 25px rgba(0,0,0,0.4));
-  animation: floatImg 3s ease-in-out infinite;
-  transition: transform 0.6s ease, opacity 0.6s ease;
-}
-
-@keyframes floatImg {
-  0% {
-    transform: translateY(0) scale(1);
-  }
-  50% {
-    transform: translateY(-12px) scale(1.02);
-  }
-  100% {
-    transform: translateY(0) scale(1);
-  }
-}
-
-/* BACKGROUND CIRCLE */
 .circle-bg {
-  margin-top: 20px;
-  margin-bottom: 20px;
-  width: 290px;
-  height: 270px;
-  background: radial-gradient(circle, rgba(255,255,255,0.12), rgba(255,255,255,0.02));
-  border-radius: 50%;
   position: absolute;
-  top: -45px;
-  right: -35px; /* changed from -45px to -35px */
+  width: 300px;
+  height: 300px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
   z-index: 1;
-  backdrop-filter: blur(2px);
 }
 
-/* ===== NAV BUTTONS ===== */
+.watch-img {
+  max-height: 280px;
+  z-index: 2;
+  filter: drop-shadow(10px 10px 20px rgba(0,0,0,0.5));
+}
+
+/* Navigation Buttons */
 .nav-btn {
   position: absolute;
   top: 50%;
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  border: none;
-  cursor: pointer;
-  font-size: 35px;
-  background: #fff;
-  color: #8A4505;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-  transition: 0.3s;
-  z-index: 10;
   transform: translateY(-50%);
+  background: white;
+  border: none;
+  width: 55px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+  color: #1a233a;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: 0.3s;
 }
 
-.left-btn {
-  left: -20px; 
+.nav-btn:hover { background: #f0f0f0; }
+.prev { left: -22px; } /* Half outside like in picture */
+.next { right: -22px; }
+
+/* Dots Indicator */
+.dots-container {
+  display: flex;
+  gap: 8px;
+  margin-top: 40px;
 }
 
-.right-btn {
-  right: -20px; 
-}
-/* ================= MOBILE ================= */
-@media (max-width: 480px) {
-  .banner-wrapper {
-    width: 95%;
-    height: auto;
-    margin-left: 10px;
-    padding-left: 15px;
-    flex-direction: column;
-    align-items: flex-start;
-    padding-bottom: 20px;
-  }
-
-  .banner-content {
-    flex-direction: column;
-    padding: 20px 10px;
-    gap: 15px;
-  }
-
-  .top-tagline {
-    font-size: 13px;
-    margin-top: 0;
-  }
-
-  .main-heading {
-    font-size: 22px;
-  }
-
-  .discount-text {
-    font-size: 14px;
-    padding: 3px 8px;
-  }
-
-  .pagination-dots {
-    margin-top: 15px;
-  }
-
-  .dot {
-    width: 6px;
-    height: 6px;
-    margin-right: 5px;
-  }
-
-  .image-container {
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
-
-  .product-img {
-    height: 140px;
-  }
-
-  .circle-bg {
-    width: 180px;
-    height: 180px;
-    top: -25px;
-    right: -20px;
-  }
-
-  .nav-btn {
-    width: 40px;
-    height: 40px;
-    font-size: 25px;
-  }
-
-  .left-btn {
-    left: -10px;
-  }
-
-  .right-btn {
-    right: -10px;
-  }
+.dot {
+  width: 10px;
+  height: 3px;
+  background: rgba(255,255,255,0.3);
+  border-radius: 2px;
 }
 
-/* ================= TABLET ================= */
-@media (max-width: 768px) {
-  .banner-wrapper {
-    width: 90%;
-    margin-left: 20px;
-    padding-left: 25px;
-    height: auto;
-  }
-
-  .banner-content {
-    flex-direction: column;
-    padding: 25px 20px;
-    gap: 20px;
-  }
-
-  .top-tagline {
-    font-size: 15px;
-  }
-
-  .main-heading {
-    font-size: 28px;
-  }
-
-  .discount-text {
-    font-size: 16px;
-    padding: 4px 10px;
-  }
-
-  .pagination-dots {
-    margin-top: 18px;
-  }
-
-  .dot {
-    width: 7px;
-    height: 7px;
-    margin-right: 6px;
-  }
-
-  .product-img {
-    height: 180px;
-  }
-
-  .circle-bg {
-    width: 220px;
-    height: 210px;
-    top: -35px;
-    right: -25px;
-  }
-
-  .nav-btn {
-    width: 48px;
-    height: 48px;
-    font-size: 30px;
-  }
-
-  .left-btn {
-    left: -15px;
-  }
-
-  .right-btn {
-    right: -15px;
-  }
-}
-
-/* ================= LAPTOP ================= */
-@media (max-width: 1024px) {
-  .banner-wrapper {
-    width: 88%;
-    margin-left: 40px;
-    padding-left: 30px;
-    height: 260px;
-  }
-
-  .banner-content {
-    padding: 30px 40px;
-  }
-
-  .top-tagline {
-    font-size: 16px;
-  }
-
-  .main-heading {
-    font-size: 32px;
-  }
-
-  .discount-text {
-    font-size: 17px;
-    padding: 4px 12px;
-  }
-
-  .product-img {
-    height: 200px;
-  }
-
-  .circle-bg {
-    width: 260px;
-    height: 240px;
-    top: -40px;
-    right: -30px;
-  }
-
-  .nav-btn {
-    width: 50px;
-    height: 50px;
-    font-size: 32px;
-  }
-
-  .left-btn {
-    left: -18px;
-  }
-
-  .right-btn {
-    right: -18px;
-  }
-}
-
-/* ================= DESKTOP ================= */
-@media (max-width: 1200px) {
-  .banner-wrapper {
-    width: 88%;
-    margin-left: 60px;
-    padding-left: 35px;
-    height: 280px;
-  }
-
-  .banner-content {
-    padding: 35px 60px;
-  }
-
-  .top-tagline {
-    font-size: 17px;
-  }
-
-  .main-heading {
-    font-size: 35px;
-  }
-
-  .discount-text {
-    font-size: 18px;
-  }
-
-  .product-img {
-    height: 220px;
-  }
-
-  .circle-bg {
-    width: 290px;
-    height: 270px;
-    top: -45px;
-    right: -35px;
-  }
-
-  .nav-btn {
-    width: 52px;
-    height: 52px;
-    font-size: 35px;
-  }
-
-  .left-btn {
-    left: -20px;
-  }
-
-  .right-btn {
-    right: -20px;
-  }
+.dot.active {
+  width: 25px;
+  background: linear-gradient(to right, #F07809, #8A4505);
 }
 

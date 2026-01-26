@@ -4,6 +4,7 @@ import Header from "../Components/Header";
 import Footer from "../Components/Footer";
 import { FaUser } from "react-icons/fa";
 import "../Pages/PostIndividual.css";
+import individual from "../assets/individual.jpg"; // replace with your image
 
 const PostIndividual = () => {
   const navigate = useNavigate();
@@ -22,9 +23,7 @@ const PostIndividual = () => {
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) {
-      navigate("/login", {
-        state: { redirectTo: "/post-individual" },
-      });
+      navigate("/login", { state: { redirectTo: "/post-individual" } });
     }
   }, [navigate]);
 
@@ -36,15 +35,12 @@ const PostIndividual = () => {
     e.preventDefault();
     setLoading(true);
 
-    // 🟢 Fake API success (replace with real API)
+    // Fake API success
     setTimeout(() => {
-      // drawer ke liye flag
       localStorage.setItem("userType", "individual");
-
       setLoading(false);
       setSuccess(true);
 
-      // 2 sec baad home
       setTimeout(() => {
         navigate("/");
       }, 2000);
@@ -55,55 +51,62 @@ const PostIndividual = () => {
     <div>
       <Header />
 
-      <div className="individual-container">
-        <h2>
-          <FaUser className="individual-icon" /> Post as Individual
-        </h2>
+      {/* Centered main card */}
+      <div className="post-main-container">
+        <div className="post-card">
+          {/* Left: Image */}
+          <div className="post-card-left">
+            <img src={individual} alt="Product" className="post-card-image" />
+          </div>
 
-        <form className="individual-form" onSubmit={handleSubmit}>
-          <input
-            name="title"
-            placeholder="Product Title"
-            value={form.title}
-            onChange={handleChange}
-            required
-          />
+          {/* Right: Form */}
+          <div className="post-card-right">
+            <h2>
+              <FaUser className="user-icon" /> Post as Individual
+            </h2>
 
-          <input
-            name="category"
-            placeholder="Category"
-            value={form.category}
-            onChange={handleChange}
-            required
-          />
+            <form className="post-form" onSubmit={handleSubmit}>
+              <input
+                name="title"
+                placeholder="Product Title"
+                value={form.title}
+                onChange={handleChange}
+                required
+              />
+              <input
+                name="category"
+                placeholder="Category"
+                value={form.category}
+                onChange={handleChange}
+                required
+              />
+              <input
+                name="price"
+                type="number"
+                placeholder="Price"
+                value={form.price}
+                onChange={handleChange}
+                required
+              />
+              <textarea
+                name="description"
+                placeholder="Description"
+                value={form.description}
+                onChange={handleChange}
+                required
+              />
+              <button type="submit" disabled={loading}>
+                {loading ? "Posting..." : "Post Now"}
+              </button>
+            </form>
 
-          <input
-            name="price"
-            type="number"
-            placeholder="Price"
-            value={form.price}
-            onChange={handleChange}
-            required
-          />
-
-          <textarea
-            name="description"
-            placeholder="Description"
-            value={form.description}
-            onChange={handleChange}
-            required
-          />
-
-          <button type="submit" disabled={loading}>
-            {loading ? "Posting..." : "Post Now"}
-          </button>
-        </form>
-
-        {success && (
-          <p className="success-msg">
-            ✅ Posted Successfully! Redirecting to Home...
-          </p>
-        )}
+            {success && (
+              <p className="success-msg">
+                ✅ Posted Successfully! Redirecting to Home...
+              </p>
+            )}
+          </div>
+        </div>
       </div>
 
       <Footer />
@@ -112,4 +115,7 @@ const PostIndividual = () => {
 };
 
 export default PostIndividual;
+
+
+
 

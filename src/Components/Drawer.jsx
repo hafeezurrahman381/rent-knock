@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import "../Components/Drawer.css";
 import {
   FaHome,
@@ -9,8 +9,6 @@ import {
   FaBell,
   FaTimes,
   FaUserCircle,
-  FaStore,
-  FaUser,
 } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
@@ -18,19 +16,7 @@ import { AuthContext } from "../context/AuthContext";
 const Drawer = ({ isOpen, setIsOpen }) => {
   const navigate = useNavigate();
   const { user, logout } = useContext(AuthContext);
-
-  const userType = localStorage.getItem("userType"); // individual | store
-  const [shop, setShop] = useState(null);
-
-  // 🔁 Drawer open hone par fresh data
-  useEffect(() => {
-    const storedShop = localStorage.getItem("myShop");
-    if (storedShop) {
-      setShop(JSON.parse(storedShop));
-    } else {
-      setShop(null);
-    }
-  }, [isOpen, userType]);
+  const [showStoreOptions, setShowStoreOptions] = useState(false);
 
   const navigateAndClose = (path) => {
     navigate(path);
@@ -38,17 +24,34 @@ const Drawer = ({ isOpen, setIsOpen }) => {
   };
 
   const handleLogout = () => {
-    logout();
+    logout && logout();
+    localStorage.removeItem("currentUser");
+    localStorage.removeItem("token");
     localStorage.removeItem("userType");
-    localStorage.removeItem("myShop");
     setIsOpen(false);
+    window.dispatchEvent(new Event("storage"));
     navigate("/login");
+  };
+
+  const handleStoreOption = (type) => {
+    if (!user) {
+      navigateAndClose("/login"); // agar login nahi hai to login page
+    } else {
+      // Save user type
+      localStorage.setItem("userType", type);
+      if (user) user.userType = type;
+
+      if (type === "individual") {
+        navigateAndClose("/individual");
+      } else if (type === "shop") {
+        navigateAndClose("/create-shop");
+      }
+    }
   };
 
   return (
     <div className={`drawer-wrapper ${isOpen ? "open" : ""}`}>
       <nav className="sidebar">
-
         {/* PROFILE SECTION */}
         <div className="profile-section">
           {user?.photoURL ? (
@@ -60,28 +63,14 @@ const Drawer = ({ isOpen, setIsOpen }) => {
           <div className="profile-info">
             <h3>{user ? user.fullName : "Guest User"}</h3>
             <p>{user ? user.email : "No email"}</p>
-
-            {/* 🏪 STORE MODE */}
-            {userType === "store" && shop && (
-              <div className="individual-badge">
-                <FaStore className="badge-icon" />
-                {shop.shopName}
-              </div>
-            )}
-
-            {/* 👤 INDIVIDUAL MODE */}
-            {userType === "individual" && (
-              <div className="individual-badge">
-                <FaUser className="badge-icon" />
-                Individual User
-              </div>
+            {user?.userType && (
+              <span className={`user-type ${user.userType}`}>
+                {user.userType === "individual" ? "Individual" : "Shop Owner"}
+              </span>
             )}
           </div>
 
-          <FaTimes
-            className="close-btn"
-            onClick={() => setIsOpen(false)}
-          />
+          <FaTimes className="close-btn" onClick={() => setIsOpen(false)} />
         </div>
 
         {/* MENU */}
@@ -104,21 +93,12 @@ const Drawer = ({ isOpen, setIsOpen }) => {
           <li onClick={() => navigateAndClose("/notifications")}>
             <FaBell /> Notifications
           </li>
+          <li onClick={() => navigateAndClose("/dashboard")}>
+            <FaBell /> Dashboard
+          </li>
+       
 
-          {/* CREATE STORE (sirf individual me) */}
-          {userType === "individual" && (
-            <li onClick={() => navigateAndClose("/create-store")}>
-              <FaStore /> Create Store
-            </li>
-          )}
-
-          {/* MY STORE (sirf store me) */}
-          {userType === "store" && (
-            <li onClick={() => navigateAndClose("/my-store")}>
-              <FaStore /> My Store
-            </li>
-          )}
-
+          {/* LOGOUT */}
           {user && (
             <li onClick={handleLogout}>
               <FaUserCircle /> Logout
@@ -131,6 +111,10 @@ const Drawer = ({ isOpen, setIsOpen }) => {
 };
 
 export default Drawer;
+
+
+
+
 
 
 

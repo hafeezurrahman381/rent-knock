@@ -1,20 +1,25 @@
-// SignUp.jsx
 import React, { useState, useContext } from "react";
-import { FaUser, FaStore, FaGoogle } from "react-icons/fa";
-import "../Pages/SignUp.css";
-import { createSignupModel } from "../Models/signupModel";
+import { FaUser, FaStore, FaGoogle, FaArrowRight, FaArrowLeft, FaEye, FaEyeSlash } from "react-icons/fa";
+import { useNavigate, Link } from "react-router-dom";
 import { signupUser } from "../services/authService";
 import { AuthContext } from "../context/AuthContext";
-import { useNavigate, Link } from "react-router-dom"; // ✅ Imported Link
+import { createSignupModel } from "../Models/signupModel";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
+import signupImg from "../assets/signup.jpg";
+import "../Pages/SignUp.css";
 
 function SignUp() {
   const navigate = useNavigate();
   const { login } = useContext(AuthContext);
 
+  const [activeTab1, setActiveTab1] = useState("signup");
+  const [step, setStep] = useState(1);
   const [activeTab, setActiveTab] = useState("individual");
 
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -37,335 +42,227 @@ function SignUp() {
 
   const handleChange = (e) => {
     const { name, value, type, checked, files } = e.target;
-
     if (name === "avatar") {
       const file = files[0];
       setFormData({ ...formData, avatar: file });
       setAvatarPreview(URL.createObjectURL(file));
     } else {
-      setFormData({
-        ...formData,
-        [name]: type === "checkbox" ? checked : value,
-      });
+      setFormData({ ...formData, [name]: type === "checkbox" ? checked : value });
     }
   };
 
-  const handleSubmit = async (e) => {
+  const handleNext = (e) => {
     e.preventDefault();
-    setMessage({ text: "", type: "" });
+    setStep(2);
+  };
+
+const handleSubmit = async (e) => {
+    e.preventDefault();
 
     if (formData.password !== formData.confirmPassword) {
-      setMessage({ text: "Passwords do not match!", type: "error" });
-      return;
-    }
-
-    if (!formData.agreeTerms) {
-      setMessage({
-        text: "You must agree to the Terms & Conditions and Privacy Policy.",
-        type: "error",
-      });
+      setMessage({ text: "PINs do not match!", type: "error" });
       return;
     }
 
     let payload = createSignupModel(formData, activeTab);
-    delete payload.shopName;
-    delete payload.shopCategory;
-    delete payload.shopOwnerNumber;
-    delete payload.shopAddress;
-    delete payload.businessType;
+
+    if (activeTab === "individual") {
+      delete payload.shopName;
+      delete payload.shopCategory;
+      delete payload.shopOwnerNumber;
+      delete payload.shopAddress;
+      delete payload.businessType;
+    }
+
+    delete payload.avatar;
 
     try {
+      setLoading(true);
       await signupUser(payload);
 
-      login({
-        fullName: formData.fullName,
-        email: formData.email,
-      });
+      // User data set karein
+      const userData = { fullName: formData.fullName, email: formData.email };
+      
+      localStorage.setItem("currentUser", JSON.stringify(userData));
+      login(userData); // Update Context if exists
+
+      // 🚨 Sab se zaroori line: NavBar ko signal bhejna
+      window.dispatchEvent(new Event("userLogin"));
 
       setMessage({ text: "Signup Successful!", type: "success" });
-
-      setFormData({
-        fullName: "",
-        email: "",
-        mobile: "",
-        password: "",
-        confirmPassword: "",
-        city: "",
-        address: "",
-        shopName: "",
-        shopCategory: "",
-        shopOwnerNumber: "",
-        shopAddress: "",
-        businessType: "",
-        agreeTerms: false,
-        avatar: null,
-      });
-
-      setAvatarPreview(null);
-
-      setTimeout(() => {
-        navigate("/");
-      }, 2000);
-
+      setTimeout(() => navigate("/"), 2000);
     } catch (error) {
-      setMessage({
-        text: error.message || "Signup Failed. Try again.",
-        type: "error",
-      });
+      setMessage({ text: error.message || "Signup Failed", type: "error" });
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <div>
+    <div className="signup-page-full">
       <Header />
+      <div className="main-center-div-4">
+        <div className="auth-split-card-1">
+          <div className="left-image-section-2">
+            <img src={signupImg} alt="Branding" className="signup" />
+          </div>
 
-      <div className="signup-container">
-        <h2>Signup</h2>
+          <div className="right-form-section-3">
+            <div className="top-tabs">
+              <button
+                className={`tab ${activeTab1 === "signup" ? "active" : ""}`}
+                type="button"
+                onClick={() => setActiveTab1("signup")}
+              >
+                Sign Up
+              </button>
+              <button
+                className={`tab ${activeTab1 === "signin" ? "active" : ""}`}
+                type="button"
+                onClick={() => { setActiveTab1("signin"); navigate("/login"); }}
+              >
+                Sign In
+              </button>
+            </div>
 
-        {message.text && (
-          <div className={`message ${message.type}`}>{message.text}</div>
-        )}
+            <form onSubmit={handleSubmit}>
+              {message.text && <div className={`message ${message.type}`}>{message.text}</div>}
 
-        <div className="tabs">
-          <button
-            className={activeTab === "individual" ? "active" : ""}
-            onClick={() => setActiveTab("individual")}
-          >
-            <FaUser style={{ marginRight: "5px" }} /> Individual
-          </button>
+              {step === 1 && (
+                <div className="fade-in">
+                  <div className="account-type-toggle">
+                    <button type="button" className={activeTab === "individual" ? "active" : ""} onClick={() => setActiveTab("individual")}><FaUser /> Individual</button>
+                    <button type="button" className={activeTab === "shop" ? "active" : ""} onClick={() => setActiveTab("shop")}><FaStore /> Business</button>
+                  </div>
 
-          <button
-            className={activeTab === "shop" ? "active" : ""}
-            onClick={() => setActiveTab("shop")}
-          >
-            <FaStore style={{ marginRight: "5px" }} /> Shop / Business
-          </button>
+                  <div className="input-group">
+                    <label>Full Name</label>
+                    <input type="text" name="fullName" value={formData.fullName} onChange={handleChange} placeholder="Aldrego" required />
+                  </div>
+                  <div className="input-group">
+                    <label>Email</label>
+                    <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="email@example.com" required />
+                  </div>
+                  <div className="input-group">
+                    <label>PIN (6 digits)</label>
+                    <div className="password-field">
+                      <input
+                        type={showPassword ? "text" : "password"}
+                        name="password"
+                        value={formData.password}
+                        onChange={handleChange}
+                        placeholder="••••••"
+                        maxLength={6}
+                        required
+                      />
+                      <span className="eye-icon" onClick={() => setShowPassword(!showPassword)}>
+                        {showPassword ? <FaEyeSlash /> : <FaEye />}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="input-group">
+                    <label>Confirm PIN</label>
+                    <div className="password-field">
+                      <input
+                        type={showConfirmPassword ? "text" : "password"}
+                        name="confirmPassword"
+                        value={formData.confirmPassword}
+                        onChange={handleChange}
+                        placeholder="••••••"
+                        maxLength={6}
+                        required
+                      />
+                      <span className="eye-icon" onClick={() => setShowConfirmPassword(!showConfirmPassword)}>
+                        {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
+                      </span>
+                    </div>
+                  </div>
+
+                  <button type="button" className="next-btn-styled" onClick={handleNext}>
+                    Next Step <FaArrowRight />
+                  </button>
+                </div>
+              )}
+
+              {step === 2 && (
+                <div className="fade-in step-2-container">
+                  <div className="input-group">
+                    <label>Mobile Number</label>
+                    <input type="tel" name="mobile" value={formData.mobile} onChange={handleChange} placeholder="+92 3XX XXXXXXX" required />
+                  </div>
+                  <div className="input-group">
+                    <label>City</label>
+                    <input type="text" name="city" value={formData.city} onChange={handleChange} placeholder="City" required />
+                  </div>
+                  <div className="input-group">
+                    <label>Complete Address</label>
+                    <input type="text" name="address" value={formData.address} onChange={handleChange} placeholder="House/Street" required />
+                  </div>
+
+                  {activeTab === "shop" && (
+                    <div className="business-fields">
+                      <div className="input-group">
+                        <label>Shop Name</label>
+                        <input type="text" name="shopName" value={formData.shopName} onChange={handleChange} />
+                      </div>
+                      <div className="input-group">
+                        <label>Shop Category</label>
+                        <select name="shopCategory" value={formData.shopCategory} onChange={handleChange}>
+                          <option value="">Select Category</option>
+                          <option value="Grocery">Grocery</option>
+                          <option value="Electronics">Electronics</option>
+                          <option value="Medical">Medical</option>
+                        </select>
+                      </div>
+                      <div className="input-group">
+                        <label>Business Type</label>
+                        <select name="businessType" value={formData.businessType} onChange={handleChange}>
+                          <option value="">Select Type</option>
+                          <option value="Sole Proprietorship">Sole Proprietorship</option>
+                          <option value="Partnership">Partnership</option>
+                        </select>
+                      </div>
+                      <div className="input-group">
+                        <label>Shop Owner Number</label>
+                        <input type="tel" name="shopOwnerNumber" value={formData.shopOwnerNumber} onChange={handleChange} />
+                      </div>
+                      <div className="input-group">
+                        <label>Shop Address</label>
+                        <input type="text" name="shopAddress" value={formData.shopAddress} onChange={handleChange} />
+                      </div>
+                    </div>
+                  )}
+
+                  <div className="checkbox-group">
+                    <input type="checkbox" name="agreeTerms" checked={formData.agreeTerms} onChange={handleChange} required />
+                    <label>I agree to the <Link to="/terms">Terms & Conditions</Link></label>
+                  </div>
+
+                  <div className="action-buttons">
+                    <button type="button" className="back-arrow-btn" onClick={() => setStep(1)}><FaArrowLeft /></button>
+                   <button
+                      type="submit"
+                      className="submit-btn-styled"
+                      disabled={loading}
+                    >
+                      {loading ? <span className="loader"></span> : "Create Account"}
+                    </button>
+                  </div>
+                </div>
+              )}
+
+              <div className="social-footer">
+                <button type="button" className="google-btn">
+                  <FaGoogle className="google-icon" /> <span>Continue with Google</span>
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
-
-        <form onSubmit={handleSubmit}>
-          {/* Avatar */}
-          <div className="form-group">
-            <label>Profile Avatar</label>
-            <input
-              type="file"
-              name="avatar"
-              accept="image/*"
-              onChange={handleChange}
-            />
-            {avatarPreview && (
-              <div className="avatar-preview">
-                <img src={avatarPreview} alt="Avatar Preview" width="100" />
-              </div>
-            )}
-          </div>
-
-          {/* Individual Info */}
-          <div className="form-group">
-            <label>Full Name</label>
-            <input
-              type="text"
-              name="fullName"
-              value={formData.fullName}
-              onChange={handleChange}
-              placeholder="Enter your full name"
-              required
-            />
-          </div>
-
-          <div className="form-group">
-            <label>Email Address</label>
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              placeholder="Enter your email address"
-              required
-            />
-          </div>
-
-          <div className="form-group">
-            <label>Mobile Number</label>
-            <input
-              type="tel"
-              name="mobile"
-              value={formData.mobile}
-              onChange={handleChange}
-              placeholder="+92 311 5845181"
-              required
-            />
-          </div>
-
-          <div className="form-group">
-            <label>PIN / Password</label>
-            <input
-              type="password"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-              placeholder="Create a strong PIN"
-              maxLength={6}
-              pattern="\d{6}"
-              required
-            />
-          </div>
-
-          <small className="pin-note">* PIN must be 6 digits</small>
-
-          <div className="form-group">
-            <label>Confirm PIN</label>
-            <input
-              type="password"
-              name="confirmPassword"
-              value={formData.confirmPassword}
-              onChange={handleChange}
-              placeholder="Re-enter your PIN"
-              maxLength={6}
-              pattern="\d{6}"
-              required
-            />
-          </div>
-
-          <div className="form-group">
-            <label>City</label>
-            <input
-              type="text"
-              name="city"
-              value={formData.city}
-              onChange={handleChange}
-              placeholder="Select City"
-              required
-            />
-          </div>
-
-          <div className="form-group">
-            <label>Complete Address</label>
-            <textarea
-              name="address"
-              value={formData.address}
-              onChange={handleChange}
-              placeholder="Full Street / House Info"
-              required
-            />
-          </div>
-
-          {/* Shop / Business Info */}
-          {activeTab === "shop" && (
-            <>
-              <h3>Business Details</h3>
-
-              <div className="form-group">
-                <label>Shop / Business Name</label>
-                <input
-                  type="text"
-                  name="shopName"
-                  value={formData.shopName}
-                  onChange={handleChange}
-                  placeholder="Enter shop or business name"
-                />
-              </div>
-
-              <div className="form-group">
-                <label>Shop Category</label>
-                <select
-                  name="shopCategory"
-                  value={formData.shopCategory}
-                  onChange={handleChange}
-                >
-                  <option value="">Select category</option>
-                  <option value="Grocery">Grocery</option>
-                  <option value="Electronics">Electronics</option>
-                  <option value="Clothing">Clothing</option>
-                  <option value="Other">Other</option>
-                </select>
-              </div>
-
-              <div className="form-group">
-                <label>Shop Owner Number</label>
-                <input
-                  type="tel"
-                  name="shopOwnerNumber"
-                  value={formData.shopOwnerNumber}
-                  onChange={handleChange}
-                  placeholder="+92...(Business Contact)"
-                />
-              </div>
-
-              <div className="form-group">
-                <label>Shop Address</label>
-                <input
-                  type="text"
-                  name="shopAddress"
-                  value={formData.shopAddress}
-                  onChange={handleChange}
-                  placeholder="Enter shop location"
-                />
-              </div>
-
-              <div className="form-group">
-                <label>Business Registration Type</label>
-                <select
-                  name="businessType"
-                  value={formData.businessType}
-                  onChange={handleChange}
-                >
-                  <option value="">Select type</option>
-                  <option value="Sole Proprietorship">
-                    Sole Proprietorship
-                  </option>
-                  <option value="Partnership">Partnership</option>
-                  <option value="Private Limited">Private Limited</option>
-                </select>
-              </div>
-            </>
-          )}
-
-          <div className="form-group checkbox">
-            <input
-              type="checkbox"
-              name="agreeTerms"
-              checked={formData.agreeTerms}
-              onChange={handleChange}
-            />
-            <label>
-              I agree to the{" "}
-              <Link to="/terms">Terms & Conditions</Link> and{" "}
-              <Link to="/privacy">Privacy Policy</Link>.
-            </label>
-          </div>
-
-          <div className="create-account">
-            <button type="submit">Create Account</button>
-          </div>
-
-          <button type="button" className="google-account">
-            <FaGoogle style={{ marginRight: "5px" }} /> Continue with Google
-          </button>
-
-          <div className="login-container">
-            <p>
-              Already have an account? <Link to="/login">Login</Link>
-            </p>
-          </div>
-        </form>
       </div>
-
       <Footer />
     </div>
   );
 }
 
 export default SignUp;
-
-
-
-
-
-
-
-
-
-
-
-
-

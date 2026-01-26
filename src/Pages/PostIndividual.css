@@ -1,62 +1,134 @@
-.individual-container {
-  max-width: 450px;
-  margin: 40px auto;
-  padding: 20px;
-  background: #fff;
-  border-radius: 6px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-}
-
-.individual-container h2 {
-  text-align: center;
-  margin-bottom: 20px;
+/* Center main container */
+.post-main-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 8px;
+  min-height: 85vh;
+  padding: 30px;
 }
 
-.individual-icon {
+/* Card containing image + form */
+.post-card {
+  display: flex;
+  width: 900px;
+  height: 500px; /* same height for image & form */
+  background: white;
+  border-radius: 25px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  flex-wrap: wrap;
+}
+
+/* Left side - image (65%) */
+.post-card-left {
+  flex: 55%;
+  min-width: 300px;
+  height: 100%;
+}
+
+.post-card-image {
+  width: 100%;
+  height: 110%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.post-card-image:hover {
+  transform: scale(1.05);
+}
+
+/* Right side - form (35%) */
+.post-card-right {
+  flex: 35%;
+  min-width: 250px;
+  padding: 40px 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.post-card-right h2 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1.8rem;
+  margin-bottom: 25px;
   color: orange;
 }
 
-.individual-form {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+.user-icon {
+  color: orange;
 }
 
-.individual-form input,
-.individual-form textarea {
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 14px;
+/* Form styling */
+.post-form input,
+.post-form textarea {
+  width: 100%;
+  padding: 14px 18px;
+  margin-bottom: 18px;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  transition: all 0.3s;
 }
 
-.individual-form textarea {
-  resize: none;
-  height: 80px;
+.post-form input:focus,
+.post-form textarea:focus {
+  border-color: orange;
+  outline: none;
 }
 
-.individual-form button {
-  padding: 12px;
-  background: orange;
-  color: white;
+.post-form textarea {
+  resize: vertical;
+  height: 100px;
+}
+
+.post-form button {
+  width: 100%;
+  padding: 14px;
+  font-size: 1.1rem;
+  font-weight: bold;
   border: none;
-  font-size: 15px;
-  border-radius: 4px;
+  border-radius: 12px;
+   background: linear-gradient(to right, #F07809, #8A4505);
+  color: white;
   cursor: pointer;
+  transition: all 0.3s;
 }
 
-.individual-form button:disabled {
-  background: #ccc;
+.post-form button:hover:not(:disabled) {
+    background: linear-gradient(to right, #F07809, #8A4505);
+  color: white;
+  transform: translateY(-2px);
 }
 
+.post-form button:disabled {
+  background: #a5d6a7;
+  cursor: not-allowed;
+}
+
+/* Success message */
 .success-msg {
-  text-align: center;
   margin-top: 15px;
-  color: green;
-  font-weight: 500;
+  text-align: center;
+  font-weight: bold;
+  color: #4caf50;
 }
 
+/* Responsive for small screens */
+@media (max-width: 900px) {
+  .post-card {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .post-card-left,
+  .post-card-right {
+    min-width: 100%;
+    height: auto;
+  }
+
+  .post-card-image {
+    height: 300px;
+  }
+}
