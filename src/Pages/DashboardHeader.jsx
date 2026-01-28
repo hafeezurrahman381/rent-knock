@@ -1,42 +1,55 @@
 import React from "react";
+import { FaBars, FaSearch, FaBell, FaEnvelope } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 import "./DashboardHeader.css";
-import { FaSearch, FaBell } from "react-icons/fa";
+import avatar from "../assets/avatar.png"; // <-- add your avatar image here
 
-const DashboardHeader = () => {
+const DashboardHeader = ({ open, setOpen }) => {
+  const navigate = useNavigate();
+
   return (
-    <div className="dashboard-header">
-
-      {/* LEFT TITLE */}
-      <h2 className="dashboard-title">Dashboard</h2>
-
-      {/* RIGHT SECTION */}
-      <div className="dashboard-right">
-
-        {/* Search */}
-   <div className="search-wrapper">
-    <input type="text" placeholder="Search..." className="search-input" />
-    <FaSearch className="search-icon" />
-  </div>
-
-  <div className="notification-wrapper">
-    <FaBell className="notification-icon" />
-    <span className="notification-badge">5</span>
-  </div>
-
-        {/* User Profile */}
-        <div className="user-profile">
-          <img
-            src="https://i.pravatar.cc/50"
-            alt="user"
-            className="user-avatar"
-          />
-          <span className="user-name">Rafael Williams</span>
+    <div className="rk-top-header">
+      {/* LEFT */}
+      <div className="rk-header-left">
+        <button className="rk-toggle-btn" onClick={() => setOpen(!open)}>
+          <FaBars />
+        </button>
+        <div className="rk-search-box">
+          <FaSearch className="rk-search-icon" />
+          <input type="text" placeholder="Search..." />
         </div>
+      </div>
 
+      {/* RIGHT */}
+      <div className="rk-header-right">
+        <button
+          className="rk-header-btn"
+          onClick={() => navigate("/messages")}
+          title="Messages"
+        >
+          <FaEnvelope />
+          <span className="rk-dot"></span>
+        </button>
+
+        <button
+          className="rk-header-btn"
+          onClick={() => navigate("/notifications")}
+          title="Notifications"
+        >
+          <FaBell />
+          <span className="rk-dot"></span>
+        </button>
+
+        <button
+          className="rk-header-btn rk-avatar-btn"
+          onClick={() => navigate("/profile")}
+          title="Profile"
+        >
+          <img src={avatar} alt="User Avatar" className="rk-avatar" />
+        </button>
       </div>
     </div>
   );
 };
 
 export default DashboardHeader;
-

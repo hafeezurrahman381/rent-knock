@@ -1,0 +1,358 @@
+.shipping-page-wrapper {
+    min-height: 100vh;
+    background-color: #ffffff;
+    font-family: 'Outfit', sans-serif;
+    color: #1a1a1a;
+}
+
+.shipping-main {
+    padding-bottom: 100px;
+}
+
+/* Hero Section */
+.shipping-hero {
+    padding: 100px 20px 80px;
+    background: linear-gradient(135deg, #fff 0%, #fff5ed 100%);
+    text-align: center;
+    border-bottom: 1px solid #eee;
+}
+
+.shipping-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(240, 120, 9, 0.1);
+    color: #F07809;
+    padding: 8px 20px;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.shipping-hero-content h1 {
+    font-size: 48px;
+    font-weight: 900;
+    margin-bottom: 15px;
+    letter-spacing: -1.5px;
+}
+
+.shipping-hero-content p {
+    font-size: 18px;
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Layout Container */
+.shipping-content-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.shipping-layout-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 40px;
+    margin-top: -40px;
+}
+
+/* Cards Common */
+.tracking-look-card,
+.shipping-policies-card,
+.shipping-cta-card {
+    background: white;
+    border-radius: 30px;
+    padding: 40px;
+    border: 1px solid #eee;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+}
+
+.card-header-modern {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.card-header-modern svg {
+    color: #F07809;
+    font-size: 20px;
+}
+
+.card-header-modern h3 {
+    font-size: 22px;
+    font-weight: 800;
+}
+
+/* Tracking Input */
+.tracking-input-box {
+    display: flex;
+    gap: 15px;
+    background: #f9f9f9;
+    padding: 8px;
+    border-radius: 20px;
+    border: 1px solid #eee;
+    margin-bottom: 40px;
+}
+
+.tracking-input-box input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    padding-left: 15px;
+    outline: none;
+    font-family: inherit;
+    font-size: 15px;
+}
+
+.track-btn-premium {
+    background: linear-gradient(to right, #F07809, #8A4505);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.track-btn-premium:hover {
+    transform: scale(1.02);
+}
+
+/* Timeline */
+.tracking-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.timeline-step {
+    display: flex;
+    gap: 20px;
+    position: relative;
+}
+
+.step-marker {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 24px;
+}
+
+.marker-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ddd;
+    z-index: 2;
+    margin-top: 5px;
+}
+
+.marker-line {
+    width: 2px;
+    flex: 1;
+    background: #eee;
+    margin: 5px 0;
+}
+
+.timeline-step.completed .marker-dot {
+    background: #1e9e5a;
+    box-shadow: 0 0 0 4px rgba(30, 158, 90, 0.1);
+}
+
+.timeline-step.completed .marker-line {
+    background: #1e9e5a;
+}
+
+.timeline-step.current .marker-dot {
+    background: #F07809;
+    transform: scale(1.3);
+    box-shadow: 0 0 0 4px rgba(240, 120, 9, 0.2);
+}
+
+.step-content {
+    padding-bottom: 30px;
+}
+
+.step-content h4 {
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.step-content span {
+    font-size: 13px;
+    color: #888;
+}
+
+.timeline-step.completed .step-content h4 {
+    color: #1e9e5a;
+}
+
+.timeline-step.current .step-content h4 {
+    color: #F07809;
+}
+
+/* Policies */
+.shipping-policies-card h3 {
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 25px;
+}
+
+.policy-item {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    padding: 20px;
+    background: #fcfcfc;
+    border-radius: 20px;
+    border: 1px solid #f5f5f5;
+    margin-bottom: 15px;
+}
+
+.policy-icon {
+    width: 50px;
+    height: 50px;
+    background: #fff5ed;
+    color: #F07809;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}
+
+.policy-text strong {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 2px;
+}
+
+.policy-text p {
+    font-size: 14px;
+    color: #666;
+}
+
+/* FAQS */
+.section-header-simple {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.section-header-simple svg {
+    color: #F07809;
+    font-size: 20px;
+}
+
+.section-header-simple h2 {
+    font-size: 24px;
+    font-weight: 800;
+}
+
+.shipping-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+.ship-faq-item {
+    background: white;
+    border-radius: 20px;
+    border: 1px solid #eee;
+    overflow: hidden;
+}
+
+.ship-faq-item button {
+    width: 100%;
+    padding: 20px 25px;
+    background: transparent;
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 15px;
+    color: #222;
+    cursor: pointer;
+    text-align: left;
+}
+
+.ship-faq-item.active {
+    border-color: #F07809;
+}
+
+.ship-faq-item.active button svg {
+    transform: rotate(180deg);
+    color: #F07809;
+}
+
+.ship-faq-answer {
+    padding: 0 25px 20px;
+}
+
+.ship-faq-answer p {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* CTA Card */
+.shipping-cta-card {
+    background: #1a1a1a;
+    color: white;
+    border: none;
+    text-align: center;
+}
+
+.shipping-cta-card h3 {
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.shipping-cta-card p {
+    color: #aaa;
+    font-size: 14px;
+    margin-bottom: 25px;
+}
+
+.contact-logistic-btn {
+    width: 100%;
+    padding: 15px;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.contact-logistic-btn:hover {
+    background: #F07809;
+    border-color: #F07809;
+}
+
+@media (max-width: 992px) {
+    .shipping-layout-grid {
+        grid-template-columns: 1fr;
+        margin-top: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .shipping-hero-content h1 {
+        font-size: 32px;
+    }
+}

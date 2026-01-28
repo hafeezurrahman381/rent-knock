@@ -2,7 +2,8 @@ import React from "react";
 import DashboardStats from "./DashboardStats";
 import SalesGraph from "../Pages/SalesGraph";
 import { FaSearch, FaBell } from "react-icons/fa";
-import DashboardHeader from "./DashboardHeader";
+import DashboardProduct from "../Pages/DashboardProduct";
+import SalesReport from "../Pages/SalesReport";
 
 const DashboardHome = () => {
   
@@ -10,9 +11,10 @@ const DashboardHome = () => {
   return (
     <div>
   
-         <DashboardHeader />
          <DashboardStats />
          <SalesGraph />
+         <DashboardProduct />
+         <SalesReport />
     </div>
   );
 };

@@ -1,0 +1,96 @@
+.dashboard-row {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  background: #f4f6f9;
+}
+
+/* ===== Recent Orders Card ===== */
+.orders-card {
+  flex: 2;
+  background: #fff;
+  padding: 18px;
+  border-radius: 14px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+  width: 65%;
+}
+
+.orders-card h3 {
+  margin-bottom: 15px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.orders-card table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.orders-card th,
+.orders-card td {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  text-align: left;
+}
+
+.orders-card th {
+  color: #777;
+  font-weight: 600;
+}
+
+/* Status Colors */
+.status {
+  font-weight: 600;
+}
+
+.status.approved {
+  color: green;
+}
+
+.status.rejected {
+  color: red;
+}
+
+.status.pending {
+  color: orange;
+}
+
+/* ===== Analytics Card ===== */
+.analytics-card {
+  flex: 1;
+  background: #fff;
+  padding: 18px;
+  border-radius: 14px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+  width: 35%;
+}
+
+.analytics-card h3 {
+  margin-bottom: 12px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.analytics-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+.analytics-item strong {
+  font-weight: 700;
+}
+
+.risk-low {
+  color: green;
+}
+
+/* Graph Box */
+.graph-box {
+  margin-top: 15px;
+  background: #fff7ed;
+  padding: 10px;
+  border-radius: 10px;
+}

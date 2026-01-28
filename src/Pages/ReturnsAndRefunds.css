@@ -1,0 +1,291 @@
+.returns-page-wrapper {
+    min-height: 100vh;
+    background-color: #ffffff;
+    font-family: 'Outfit', sans-serif;
+    color: #1a1a1a;
+}
+
+.returns-main {
+    padding-bottom: 100px;
+}
+
+/* Hero Section */
+.returns-hero {
+    padding: 120px 20px 80px;
+    background: linear-gradient(135deg, #fff 0%, #fff5ed 100%);
+    text-align: center;
+    border-bottom: 1px solid #eee;
+}
+
+.returns-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(240, 120, 9, 0.1);
+    color: #F07809;
+    padding: 8px 18px;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 13px;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.returns-hero-content h1 {
+    font-size: 52px;
+    font-weight: 900;
+    margin-bottom: 20px;
+    letter-spacing: -1.5px;
+}
+
+.returns-hero-content p {
+    font-size: 18px;
+    color: #666;
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+/* Container */
+.returns-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 20px 0;
+}
+
+/* Steps Grid */
+.returns-steps-section {
+    margin-bottom: 80px;
+}
+
+.section-header-modern {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-header-modern h2 {
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.section-header-modern p {
+    color: #888;
+}
+
+.returns-steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.step-card-premium {
+    background: white;
+    padding: 40px 30px;
+    border-radius: 30px;
+    border: 1px solid #f0f0f0;
+    text-align: center;
+    position: relative;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
+}
+
+.step-card-premium:hover {
+    transform: translateY(-10px);
+    border-color: #F07809;
+    box-shadow: 0 20px 50px rgba(240, 120, 9, 0.1);
+}
+
+.step-number {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-size: 40px;
+    font-weight: 900;
+    color: #f5f5f5;
+    line-height: 1;
+    z-index: 0;
+}
+
+.step-icon-premium {
+    width: 70px;
+    height: 70px;
+    background: #fff5ed;
+    color: #F07809;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    margin: 0 auto 25px;
+    position: relative;
+    z-index: 1;
+}
+
+.step-card-premium h3 {
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 12px;
+    position: relative;
+    z-index: 1;
+}
+
+.step-card-premium p {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Bottom Grid */
+.returns-bottom-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1.8fr;
+    gap: 40px;
+    align-items: start;
+}
+
+.returns-policy-card {
+    background: #1a1a1a;
+    color: white;
+    padding: 40px;
+    border-radius: 30px;
+}
+
+.policy-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.policy-header svg {
+    color: #F07809;
+    font-size: 24px;
+}
+
+.policy-header h3 {
+    font-size: 22px;
+    font-weight: 800;
+}
+
+.policy-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 30px;
+}
+
+.policy-list li {
+    padding-left: 25px;
+    position: relative;
+    margin-bottom: 15px;
+    font-size: 15px;
+    color: #ccc;
+    line-height: 1.5;
+}
+
+.policy-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #F07809;
+    font-weight: bold;
+}
+
+.download-policy-btn {
+    width: 100%;
+    padding: 16px;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.download-policy-btn:hover {
+    background: #F07809;
+    border-color: #F07809;
+}
+
+/* FAQs */
+.section-header-simple {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.section-header-simple svg {
+    color: #F07809;
+    font-size: 18px;
+}
+
+.section-header-simple h3 {
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.returns-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.ret-faq-item {
+    background: white;
+    border-radius: 20px;
+    border: 1px solid #eee;
+    overflow: hidden;
+}
+
+.ret-faq-item button {
+    width: 100%;
+    padding: 22px 25px;
+    background: transparent;
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 15px;
+    color: #333;
+    cursor: pointer;
+    text-align: left;
+}
+
+.ret-faq-item.active {
+    border-color: #F07809;
+}
+
+.ret-faq-item.active button svg {
+    transform: rotate(180deg);
+    color: #F07809;
+}
+
+.ret-faq-answer {
+    padding: 0 25px 22px;
+}
+
+.ret-faq-answer p {
+    color: #777;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+@media (max-width: 992px) {
+    .returns-bottom-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .returns-hero-content h1 {
+        font-size: 36px;
+    }
+
+    .returns-hero {
+        padding: 100px 20px 60px;
+    }
+}

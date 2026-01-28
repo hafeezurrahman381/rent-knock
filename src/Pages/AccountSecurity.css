@@ -1,0 +1,330 @@
+.security-page-wrapper {
+    min-height: 100vh;
+    background-color: #ffffff;
+    font-family: 'Outfit', sans-serif;
+    color: #1a1a1a;
+}
+
+.security-main {
+    padding-bottom: 100px;
+}
+
+/* Hero Section */
+.security-hero {
+    padding: 120px 20px 80px;
+    background: radial-gradient(circle at top right, #fff5ed, #ffffff);
+    text-align: center;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.security-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: white;
+    color: #F07809;
+    padding: 10px 22px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 25px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+.security-hero-content h1 {
+    font-size: 56px;
+    font-weight: 900;
+    margin-bottom: 20px;
+    letter-spacing: -2px;
+}
+
+.security-hero-content p {
+    font-size: 18px;
+    color: #666;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* Container & Layout */
+.security-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px 0;
+}
+
+.security-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+}
+
+/* Security Cards */
+.options-grid {
+    display: grid;
+    gap: 15px;
+    margin-bottom: 50px;
+}
+
+.security-feat-card {
+    display: flex;
+    align-items: center;
+    padding: 25px 30px;
+    background: white;
+    border-radius: 25px;
+    border: 1px solid #f0f0f0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.security-feat-card:hover {
+    background: #fcfcfc;
+    border-color: #eee;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+}
+
+.feat-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin-right: 25px;
+}
+
+.feat-info {
+    flex: 1;
+}
+
+.feat-info h3 {
+    font-size: 18px;
+    font-weight: 800;
+    margin-bottom: 5px;
+}
+
+.feat-info p {
+    font-size: 14px;
+    color: #777;
+}
+
+.arrow-icon {
+    color: #ccc;
+    font-size: 16px;
+}
+
+/* Account Details Section */
+.security-details-section h2 {
+    font-size: 28px;
+    font-weight: 800;
+    margin-bottom: 25px;
+}
+
+.info-list-modern {
+    background: white;
+    border-radius: 30px;
+    border: 1px solid #eee;
+    overflow: hidden;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    padding: 25px 35px;
+    border-bottom: 1px solid #f8f8f8;
+}
+
+.info-item:last-child {
+    border-bottom: none;
+}
+
+.info-label {
+    width: 200px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #888;
+}
+
+.info-value {
+    flex: 1;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.edit-link {
+    background: transparent;
+    border: none;
+    color: #F07809;
+    font-weight: 800;
+    font-family: inherit;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 8px 15px;
+    border-radius: 10px;
+    transition: background 0.2s;
+}
+
+.edit-link:hover {
+    background: rgba(240, 120, 9, 0.05);
+}
+
+/* SIDEBAR */
+.security-status-card {
+    background: #1a1a1a;
+    color: white;
+    padding: 35px;
+    border-radius: 30px;
+    margin-bottom: 25px;
+}
+
+.security-status-card h3 {
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 15px;
+}
+
+.status-indicator {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.pulse-dot {
+    width: 10px;
+    height: 100%;
+    aspect-ratio: 1;
+    background: #1e9e5a;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(30, 158, 90, 0.4);
+    }
+
+    70% {
+        transform: scale(1.1);
+        box-shadow: 0 0 0 10px rgba(30, 158, 90, 0);
+    }
+
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(30, 158, 90, 0);
+    }
+}
+
+.status-indicator span {
+    font-weight: 700;
+    color: #1e9e5a;
+    font-size: 14px;
+}
+
+.security-status-card p {
+    font-size: 13px;
+    color: #aaa;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.progress-bar-container {
+    height: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(to right, #F07809, #ff9d42);
+    border-radius: 10px;
+}
+
+.percent {
+    font-size: 12px;
+    font-weight: 800;
+    color: #F07809;
+}
+
+/* Activity Card */
+.login-activity-card {
+    padding: 35px;
+    border-radius: 30px;
+    border: 1px solid #eee;
+    background: white;
+}
+
+.card-top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.card-top svg {
+    color: #F07809;
+}
+
+.card-top h3 {
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.activity-item {
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #f5f5f5;
+}
+
+.activity-item strong {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 3px;
+}
+
+.activity-item span {
+    font-size: 12px;
+    color: #999;
+}
+
+.see-all-btn {
+    width: 100%;
+    padding: 12px;
+    background: #fff5ed;
+    color: #F07809;
+    border: none;
+    font-weight: 800;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.see-all-btn:hover {
+    background: #F07809;
+    color: white;
+}
+
+@media (max-width: 992px) {
+    .security-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .security-hero-content h1 {
+        font-size: 38px;
+    }
+
+    .info-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .info-label {
+        width: auto;
+    }
+}

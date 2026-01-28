@@ -1,58 +1,314 @@
-.favourite-screen {
-  padding-top: 20px;
-  padding-left: 50px;
-  padding-right: 50px;
-  padding-bottom: 20px;
+.fav-page-wrapper {
+  min-height: 100vh;
+  background-color: #ffffff;
+  font-family: 'Outfit', sans-serif;
+  overflow-x: hidden;
+}
+
+.fav-main-content {
+  padding-bottom: 100px;
+}
+
+/* Hero Section */
+.fav-hero-section {
+  padding: 80px 20px 60px;
+  background: linear-gradient(135deg, #fff 0%, #fff5ed 100%);
   text-align: center;
+  border-bottom: 1px solid #eee;
 }
 
-.items-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 50px;
-  margin-top: 20px;
-}
-
-.item-card {
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  padding: 10px;
-  position: relative;
-  transition: 0.3s;
-}
-
-.item-card img {
-  width: 100%;
-  height: 150px;
-  object-fit: contain;
-}
-
-.item-card h3 {
+.fav-badge {
+  display: inline-block;
+  background: rgba(240, 120, 9, 0.1);
+  color: #F07809;
+  padding: 8px 20px;
+  border-radius: 30px;
+  font-weight: 700;
   font-size: 14px;
-  margin: 10px 0 5px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
-.item-card p {
-  margin: 5px 0;
-  font-weight: bold;
+.fav-header-info h1 {
+  font-size: 48px;
+  font-weight: 900;
+  color: #1a1a1a;
+  margin-bottom: 15px;
+  letter-spacing: -1.5px;
 }
 
-.fav-btn {
+.fav-header-info p {
+  font-size: 18px;
+  color: #666;
+  max-width: 600px;
+  margin: 0 auto 30px;
+}
+
+/* Search Bar Styles */
+.fav-search-container {
+  display: flex;
+  justify-content: center;
+  max-width: 550px;
+  margin: 0 auto;
+}
+
+.fav-search-wrapper {
+  position: relative;
+  width: 100%;
+  border-radius: 20px;
+  background: white;
+  border: 1px solid #eee;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.fav-search-wrapper:focus-within {
+  border-color: #F07809;
+  box-shadow: 0 15px 40px rgba(240, 120, 9, 0.1);
+}
+
+.fav-search-icon {
+  margin-left: 20px;
+  color: #bbb;
+  font-size: 18px;
+}
+
+.fav-search-input {
+  width: 100%;
+  padding: 15px 20px;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-family: inherit;
+  font-size: 16px;
+  color: #333;
+}
+
+.fav-search-input::placeholder {
+  color: #bbb;
+}
+
+/* Grid Container */
+.fav-section-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 20px;
+}
+
+.fav-premium-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 30px;
+}
+
+/* Card Design */
+.fav-modern-card {
+  background: white;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05);
+  border: 1px solid #eee;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.fav-modern-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 30px 60px rgba(240, 120, 9, 0.1);
+  border-color: rgba(240, 120, 9, 0.2);
+}
+
+.fav-card-image-box {
+  position: relative;
+  height: 250px;
+  overflow: hidden;
+}
+
+.fav-card-image-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.fav-modern-card:hover .fav-card-image-box img {
+  transform: scale(1.1);
+}
+
+.fav-card-overlay {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.15);
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(2px);
+}
+
+.fav-modern-card:hover .fav-card-overlay {
+  opacity: 1;
+}
+
+.fav-action-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 15px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.fav-action-btn.remove {
+  background: white;
+  color: #ff3e3e;
+}
+
+.fav-action-btn.add {
+  background: linear-gradient(to right, #F07809, #8A4505);
+  color: white;
+}
+
+.fav-category-tag {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 6px 15px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #333;
+  backdrop-filter: blur(5px);
+}
+
+.fav-card-details {
+  padding: 25px;
+}
+
+.fav-card-details h3 {
+  font-size: 20px;
+  font-weight: 800;
+  color: #1a1a1a;
+  margin-bottom: 10px;
+  letter-spacing: -0.5px;
+}
+
+.fav-card-desc {
+  font-size: 14px;
+  color: #777;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  display: -webkit-box;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.fav-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.fav-price-tag {
+  font-size: 22px;
+  font-weight: 800;
+  color: #F07809;
+}
+
+.fav-view-btn {
   background: transparent;
   border: none;
+  color: #F07809;
+  font-weight: 700;
+  font-size: 14px;
   cursor: pointer;
-  color: grey;
-  font-size: 18px;
-  transition: 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-.fav-btn.active {
-  color: red;
+/* Empty State */
+.fav-empty-state {
+  text-align: center;
+  padding: 100px 20px;
+  max-width: 500px;
+  margin: 0 auto;
 }
 
-.fav-btn:hover {
-  transform: scale(1.2);
+.empty-icon-box {
+  width: 120px;
+  height: 120px;
+  background: #fff5ed;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 30px;
+  border: 2px solid #ffecd9;
+}
+
+.empty-heart-icon {
+  font-size: 50px;
+  color: #F07809;
+  opacity: 0.3;
+}
+
+.fav-empty-state h2 {
+  font-size: 28px;
+  font-weight: 800;
+  margin-bottom: 15px;
+  color: #1a1a1a;
+}
+
+.fav-empty-state p {
+  color: #777;
+  margin-bottom: 35px;
+  line-height: 1.6;
+}
+
+.start-shopping-btn,
+.clear-search-btn {
+  padding: 18px 40px;
+  border-radius: 18px;
+  background: linear-gradient(to right, #F07809, #8A4505);
+  color: white;
+  border: none;
+  font-weight: 800;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 auto;
+  box-shadow: 0 15px 30px rgba(240, 120, 9, 0.3);
+}
+
+.clear-search-btn {
+  background: white;
+  color: #F07809;
+  border: 1px solid #ffecd9;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+
+@media (max-width: 768px) {
+  .fav-header-info h1 {
+    font-size: 36px;
+  }
+
+  .fav-premium-grid {
+    grid-template-columns: 1fr;
+  }
 }

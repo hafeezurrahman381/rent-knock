@@ -1,0 +1,300 @@
+.payments-page-wrapper {
+    min-height: 100vh;
+    background-color: #ffffff;
+    font-family: 'Outfit', sans-serif;
+    color: #1a1a1a;
+}
+
+.payments-main {
+    padding-bottom: 100px;
+}
+
+/* Hero Section */
+.payments-hero {
+    padding: 120px 20px 80px;
+    background: linear-gradient(135deg, #fff 0%, #fef8f4 100%);
+    text-align: center;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.payments-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(30, 158, 90, 0.1);
+    color: #1e9e5a;
+    padding: 10px 22px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 13px;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.payments-hero-content h1 {
+    font-size: 52px;
+    font-weight: 900;
+    margin-bottom: 18px;
+    letter-spacing: -1.5px;
+    color: #111;
+}
+
+.payments-hero-content p {
+    font-size: 18px;
+    color: #555;
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+/* Container */
+.payments-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px 0;
+}
+
+.payments-layout-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 40px;
+}
+
+/* Payment Methods Card */
+.payment-methods-card,
+.pricing-transparency-card {
+    background: white;
+    padding: 40px;
+    border-radius: 35px;
+    border: 1px solid #eee;
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.03);
+    margin-bottom: 30px;
+}
+
+.card-header-modern {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 35px;
+}
+
+.card-header-modern svg {
+    color: #F07809;
+    font-size: 22px;
+}
+
+.card-header-modern h3 {
+    font-size: 22px;
+    font-weight: 800;
+}
+
+.methods-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.method-item-premium {
+    display: flex;
+    align-items: center;
+    padding: 22px 25px;
+    background: #fcfcfc;
+    border-radius: 20px;
+    border: 1px solid #f0f0f0;
+    transition: all 0.3s ease;
+}
+
+.method-item-premium:hover {
+    border-color: #F07809;
+    background: white;
+    transform: translateX(10px);
+}
+
+.method-icon-box {
+    width: 50px;
+    height: 50px;
+    background: #fff5ed;
+    color: #F07809;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    margin-right: 20px;
+}
+
+.method-text {
+    flex: 1;
+}
+
+.method-text strong {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 2px;
+}
+
+.method-text span {
+    font-size: 13px;
+    color: #888;
+}
+
+.preferred-badge {
+    background: #1e9e5a;
+    color: white;
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 30px;
+    letter-spacing: 0.5px;
+}
+
+/* Pricing Transparency */
+.transparency-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.trans-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 15px;
+    background: #f8fffb;
+    border-radius: 15px;
+    border: 1px solid #e1f5ea;
+}
+
+.trans-item svg {
+    color: #1e9e5a;
+    font-size: 18px;
+}
+
+.trans-item span {
+    font-size: 14px;
+    font-weight: 700;
+    color: #2c5e44;
+}
+
+/* Sidebar Columns */
+.section-header-simple {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.section-header-simple svg {
+    color: #F07809;
+    font-size: 18px;
+}
+
+.section-header-simple h2 {
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.payments-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+.pay-faq-item {
+    background: white;
+    border-radius: 20px;
+    border: 1px solid #eee;
+    overflow: hidden;
+}
+
+.pay-faq-item button {
+    width: 100%;
+    padding: 20px 25px;
+    background: transparent;
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 15px;
+    color: #333;
+    cursor: pointer;
+    text-align: left;
+}
+
+.pay-faq-item.active {
+    border-color: #F07809;
+}
+
+.pay-faq-answer {
+    padding: 0 25px 20px;
+}
+
+.pay-faq-answer p {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* Security CTA */
+.payment-security-cta {
+    background: #1a1a1a;
+    color: white;
+    padding: 40px;
+    border-radius: 35px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.shield-bg-icon {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    font-size: 120px;
+    color: rgba(255, 255, 255, 0.03);
+}
+
+.payment-security-cta h3 {
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 12px;
+}
+
+.payment-security-cta p {
+    color: #999;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.secure-logos {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.secure-logos span {
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    opacity: 0.4;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 5px 12px;
+    border-radius: 6px;
+}
+
+@media (max-width: 992px) {
+    .payments-layout-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .payments-hero-content h1 {
+        font-size: 36px;
+    }
+}

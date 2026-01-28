@@ -1,0 +1,46 @@
+.sales-card {
+  background: white;
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+  width: 100%;
+  max-width: 900px;
+}
+
+/* Header */
+.sales-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.sales-header h3 {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.sales-header button {
+  padding: 6px 12px;
+  border: 1px solid #ddd;
+  background: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* Net Profit */
+.net-profit span {
+  color: #777;
+  font-size: 14px;
+}
+
+.net-profit h2 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-top: 4px;
+}
+
+/* Chart Box */
+.chart-box {
+  margin-top: 10px;
+}

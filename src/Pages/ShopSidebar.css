@@ -1,0 +1,253 @@
+/* ShopSidebar.css - Matches SideBar.css styling */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+/* ===== Sidebar Container ===== */
+.shop-sidebar {
+  position: fixed;
+  /* Fixed as per previous ShopSidebar logic, but styles from SideBar */
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 260px;
+  /* Base width is open in ShopSidebar logic */
+  background-color: #1a233a;
+  /* Dark Theme from SideBar */
+  color: #FFFFFF;
+  overflow: hidden;
+  transition: width 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+  box-shadow: 6px 0 25px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  font-family: 'Poppins', sans-serif;
+  z-index: 1000;
+}
+
+.shop-sidebar.collapsed {
+  width: 80px;
+  /* Collapsed state */
+}
+
+/* ===== Header / Logo Area ===== */
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 25px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  margin-bottom: 10px;
+  overflow: hidden;
+  /* Ensure text doesn't overflow when collapsing */
+  white-space: nowrap;
+}
+
+.shop-logo-icon {
+  font-size: 28px;
+  /* Slightly adjusted for icon vs img */
+  color: #FFFFFF;
+  min-width: 28px;
+  transition: transform 0.5s ease, box-shadow 0.5s ease, color 0.5s ease;
+}
+
+.logo-container:hover .shop-logo-icon {
+  transform: rotate(10deg) scale(1.05);
+  color: #FFD700;
+  filter: drop-shadow(0 0 10px #FFD700);
+}
+
+.logo-text {
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  white-space: nowrap;
+  color: #FFFFFF;
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  opacity: 1;
+}
+
+.shop-sidebar.collapsed .logo-text {
+  opacity: 0;
+  transform: translateX(-20px);
+  pointer-events: none;
+}
+
+/* ===== Menu ===== */
+.sidebar-menu {
+  list-style: none;
+  padding: 20px 0;
+  margin: 0;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-item {
+  margin-bottom: 18px;
+  width: 100%;
+}
+
+/* ===== Menu Links ===== */
+.menu-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  color: #FFFFFF;
+  text-decoration: none;
+  border-radius: 12px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+  margin: 0 10px;
+  /* Add margin to look like buttons inside container */
+}
+
+.shop-sidebar.collapsed .menu-link {
+  justify-content: center;
+  padding: 12px 0;
+  margin: 0 5px;
+  /* Tighter margin when collapsed */
+}
+
+/* Icons */
+.menu-icon {
+  font-size: 1.2rem;
+  /* Match SideBar.css svg font-size */
+  min-width: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s ease;
+}
+
+/* Text */
+.menu-text {
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.shop-sidebar.collapsed .menu-text {
+  opacity: 0;
+  transform: translateX(-12px);
+  width: 0;
+  display: none;
+  /* Hide to prevent layout issues */
+}
+
+
+/* Pulse Animation on Hover */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.menu-link:hover .menu-icon {
+  animation: pulse 0.8s infinite;
+  color: #FFD700;
+}
+
+/* Neon Glow on Hover */
+.menu-link:hover {
+  transform: translateX(4px);
+  color: #FFD700;
+  text-shadow: 0 0 6px #FFD700, 0 0 12px #FFD700;
+}
+
+/* Hover overlay effect (Glass Shine) */
+.menu-link::before {
+  content: '';
+  position: absolute;
+  left: -100%;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.15);
+  transform: skewX(-20deg);
+  transition: all 0.5s ease;
+  pointer-events: none;
+}
+
+.menu-link:hover::before {
+  left: 150%;
+}
+
+/* Active Menu */
+.menu-link.active {
+  background: rgba(255, 255, 255, 0.15);
+  color: #FFD700;
+}
+
+.menu-link.active .menu-icon {
+  color: #FFD700;
+}
+
+
+/* ===== Footer / Upgrade Section ===== */
+.sidebar-footer {
+  padding: 20px;
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.shop-sidebar.collapsed .sidebar-footer {
+  display: block;
+  /* Keep footer but hide content possibly? SideBar hides footer text */
+  padding: 10px;
+}
+
+.shop-sidebar.collapsed .upgrade-card,
+.shop-sidebar.collapsed .menu-text {
+  display: none;
+}
+
+/* Upgrade Card (Adapted for Dark Theme) */
+.upgrade-card {
+  background: linear-gradient(135deg, #2b32b2 0%, #1488cc 100%);
+  border-radius: 16px;
+  padding: 16px;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  color: white;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.upgrade-btn {
+  background: white;
+  color: #1a233a;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.upgrade-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* Logout specific styling from ShopSidebar maintained but adapted */
+.menu-link[style*="rgb(227, 26, 26)"] {
+  /* Handling inline style override if necessary, or better moving inline styles to class */
+}

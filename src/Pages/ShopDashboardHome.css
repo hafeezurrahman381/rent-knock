@@ -1,0 +1,192 @@
+/* ShopDashboardHome.css */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
+
+:root {
+    --primary-color: #4318FF;
+    --secondary-color: #A3AED0;
+    --bg-light: #F4F7FE;
+    --card-bg: #FFFFFF;
+    --shadow: 0px 18px 40px rgba(112, 144, 176, 0.12);
+    --radius: 20px;
+}
+
+.shop-home-container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    font-family: 'DM Sans', sans-serif;
+    color: #2B3674;
+}
+
+/* --- Row Layouts --- */
+.dashboard-grid-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+    animation: fadeUp 0.6s ease-out;
+}
+
+.dashboard-charts-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+    animation: fadeUp 0.8s ease-out;
+}
+
+@media (max-width: 1024px) {
+    .dashboard-charts-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --- Stats Cards --- */
+.shop-stat-card {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.shop-stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 45px rgba(112, 144, 176, 0.18);
+}
+
+.shop-stat-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--bg-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: var(--primary-color);
+}
+
+.shop-stat-info h4 {
+    margin: 0;
+    font-size: 14px;
+    color: var(--secondary-color);
+    font-weight: 500;
+}
+
+.shop-stat-info p {
+    margin: 4px 0 0;
+    font-size: 24px;
+    font-weight: 700;
+    color: #2B3674;
+}
+
+/* --- Chart Cards --- */
+.chart-card {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    padding: 24px;
+    box-shadow: var(--shadow);
+    height: 100%;
+}
+
+.chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.chart-header h3 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.chart-btn {
+    background: var(--bg-light);
+    border: none;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--secondary-color);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.chart-btn:hover,
+.chart-btn.active {
+    background: var(--primary-color);
+    color: #fff;
+}
+
+/* --- Tables & Lists --- */
+.orders-section {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    padding: 24px;
+    box-shadow: var(--shadow);
+    animation: fadeUp 1s ease-out;
+}
+
+.orders-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 16px;
+}
+
+.orders-table th {
+    text-align: left;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--secondary-color);
+    padding-bottom: 12px;
+    border-bottom: 1px solid #E9EDF7;
+}
+
+.orders-table td {
+    padding: 16px 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: #2B3674;
+}
+
+.status-badge {
+    padding: 4px 10px;
+    border-radius: 30px;
+    font-size: 12px;
+    font-weight: 700;
+    width: fit-content;
+}
+
+.status-approved {
+    background: #01B574;
+    color: #fff;
+}
+
+.status-pending {
+    background: #FFB547;
+    color: #fff;
+}
+
+.status-rejected {
+    background: #EE5D50;
+    color: #fff;
+}
+
+/* --- Animations --- */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

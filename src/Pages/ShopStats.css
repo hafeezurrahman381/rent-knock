@@ -1,0 +1,110 @@
+/* ================== Stats Grid Container ================== */
+.dashboard-grid-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 22px;
+  padding: 25px;
+  animation: fadeUp 0.8s ease;
+}
+
+/* ================== Stat Card ================== */
+.shop-stat-card {
+  position: relative;
+  background: linear-gradient(135deg, #ff7a00, #d35400);
+  border-radius: 18px;
+  padding: 22px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  color: white;
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  box-shadow: 0 12px 30px rgba(255, 122, 0, 0.35);
+}
+/* Force all text white */
+.shop-stat-card {
+  color: white;
+}
+
+/* Icon white */
+.shop-stat-icon {
+  color: white !important;
+}
+
+/* Title white */
+.shop-stat-info h4 {
+  color: white;
+}
+
+/* Value white */
+.shop-stat-info p {
+  color: white;
+}
+
+/* Hover Effect */
+.shop-stat-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 20px 45px rgba(255, 122, 0, 0.55);
+}
+
+/* Glow Effect */
+.shop-stat-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, rgba(255,255,255,0.25), transparent);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.shop-stat-card:hover::before {
+  opacity: 1;
+}
+
+/* ================== Icon Box ================== */
+.shop-stat-icon {
+  font-size: 34px;
+  width: 60px;
+  height: 60px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.2);
+  animation: bounce 1.5s infinite;
+}
+
+/* ================== Text ================== */
+.shop-stat-info h4 {
+  font-size: 15px;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.shop-stat-info p {
+  font-size: 24px;
+  font-weight: 700;
+  margin-top: 4px;
+}
+
+/* ================== Animations ================== */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
